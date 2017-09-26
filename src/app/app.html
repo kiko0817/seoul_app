@@ -7,7 +7,23 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button id="homebtn" menuClose ion-item *ngFor="let p of homepage" (click)="openPage(p)"><ion-icon name="home"></ion-icon>{{p.title}}</button>
+    </ion-list>
+    <p class="subheading">거리 공연</p>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of streetPerformanceList" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+    <p class="subheading">버스킹</p>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of buskingList" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+    <p class="subheading">기타</p>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of userList" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
@@ -15,5 +31,4 @@
 
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -3,8 +3,9 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+ import { HomePage } from '../pages/home/home';
+// import { ListPage } from '../pages/list/list';
+ import { SigninPage } from '../pages/user/signin/signin';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,31 +15,43 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  homepage: Array<{title: string, component: any}>;
+  streetPerformanceList: Array<{title: string, component: any}>;
+  buskingList : Array<{title: string, component: any}>;
+  userList: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+    this.homepage = [
+      { title: '홈', component: HomePage },
     ];
+    this.streetPerformanceList = [
+      { title: '공연 일정', component: HomePage },
+      { title: '팀 정보', component: HomePage },
+      { title: '팀별 게시판', component: HomePage },
+    ];
+    this.buskingList = [
+      { title: '버스킹 일정', component: HomePage },
+      { title: '공연 등록', component: HomePage },
+    ];
+    this.userList = [
+      { title: '로그인', component: HomePage },
+      { title: '회원가입', component: SigninPage },
+      { title: '로그아웃', component: HomePage },
+    ];
+
 
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }
